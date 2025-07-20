@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RNA World Simulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="ui-top">
+    <div id="description-panel">
+      <button id="desc-close" title="Close">&times;</button>
+      <h2>RNA World Simulation</h2>
+      <p>
+        This simulation visualizes a simplified version of the <b>RNA World hypothesis</b>—the idea that early life was based on self-replicating RNA molecules. Each colored squiggle represents an RNA molecule, which can replicate, mutate, and degrade over time. The simulation shows how genetic diversity and catalytic activity might have emerged in a primordial environment.
+      </p>
+      <ul>
+        <li><b>Age</b>: Number of simulation steps an RNA has survived (older RNAs have higher age).</li>
+        <li><b>Population</b>: Total number of RNAs present.</li>
+        <li><b>Unique Sequences</b>: Genetic diversity in the population.</li>
+        <li><b>Catalytic Fraction</b>: Fraction of RNAs with a special motif that replicate faster.</li>
+      </ul>
+      <div style="margin-top:10px;">
+        <b>RNA Color Legend:</b>
+        <span class="legend-color" style="color:#ff00e6;">&#9632; Catalytic (motif)</span>
+        <span class="legend-color" style="color:#00e6ff;">&#9632; GC-rich</span>
+        <span class="legend-color" style="color:#39ff14;">&#9632; AU-rich</span>
+        <span class="legend-color" style="color:#f7ff00;">&#9632; Other</span>
+      </div>
+    </div>
+    <div id="stats-panel">
+      <div><span class="stat-label">Population:</span><span id="stat-pop">0</span></div>
+      <div><span class="stat-label">Unique Sequences:</span><span id="stat-unique">0</span></div>
+      <div><span class="stat-label">Catalytic Fraction:</span><span id="stat-catalytic">0%</span></div>
+      <div><span class="stat-label">Timestep:</span><span id="stat-tick">0</span></div>
+      <div id="desc-credit">
+        <span>Created by <b>Jason Brar</b> &mdash; <a href="https://jasonbrar.vercel.app" target="_blank" rel="noopener">jasonbrar.vercel.app</a></span>
+      </div>
+    </div>
+    <div id="controls">
+      <button id="btn-pause">Pause</button>
+      <button id="btn-reset">Reset</button>
+    </div>
+    <div id="params-panel">
+      <div class="params-title">Parameters</div>
+      <div class="param-row">
+        <label>Max Population <span id="val-popmax"></span></label>
+        <input type="range" id="input-popmax" min="20" max="300" step="1">
+      </div>
+      <div class="param-row">
+        <label>Sequence Length <span id="val-seqlen"></span></label>
+        <input type="range" id="input-seqlen" min="6" max="32" step="1">
+      </div>
+      <div class="param-row">
+        <label>Mutation Rate <span id="val-mutrate"></span></label>
+        <input type="range" id="input-mutrate" min="0" max="0.15" step="0.001">
+      </div>
+      <div class="param-row">
+        <label>Base Replication Rate <span id="val-baserep"></span></label>
+        <input type="range" id="input-baserep" min="0.01" max="0.5" step="0.001">
+      </div>
+      <div class="param-row">
+        <label>Catalytic Replication Rate <span id="val-catrep"></span></label>
+        <input type="range" id="input-catrep" min="0.01" max="0.7" step="0.001">
+      </div>
+      <div class="param-row">
+        <label>Degradation Rate <span id="val-degrate"></span></label>
+        <input type="range" id="input-degrate" min="0.001" max="0.2" step="0.001">
+      </div>
+      <div class="param-row">
+        <label>GC Stability Bonus <span id="val-gcbonus"></span></label>
+        <input type="range" id="input-gcbonus" min="0" max="0.1" step="0.001">
+      </div>
+      <div class="param-row">
+        <label>Catalytic Motif</label>
+        <input type="text" id="input-motif" maxlength="8" style="width:80px; font-family:monospace;">
+      </div>
+      <div class="param-row">
+        <label>Simulation Speed <span id="val-speed"></span></label>
+        <input type="range" id="input-speed" min="0.1" max="5" step="0.01">
+      </div>
+      <div class="param-row" style="font-size:0.95em; color:#ff00e6; margin-top:8px;" id="reset-warning"></div>
+    </div>
+  </div>
+  <canvas id="rna-canvas"></canvas>
+  <div id="rna-tooltip" style="display:none; position:fixed; z-index:10; pointer-events:none; background:rgba(20,20,40,0.95); color:#fff; border-radius:10px; box-shadow:0 0 16px #00fff7a0; padding:12px 18px; font-size:1rem; border:1.5px solid #00fff7; min-width:220px;"></div>
+  <script src="script.js"></script>
+</body>
+</html> 
