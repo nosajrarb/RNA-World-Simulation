@@ -12,6 +12,15 @@ body {
   background: #0a0a12;
   z-index: 1;
 }
+.credit-author {
+  background: linear-gradient(90deg, #ff00e6 0%, #00e6ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 1.05em;
+  letter-spacing: 0.01em;
+}
 #description-panel {
   position: absolute;
   top: 0; left: 50%;
